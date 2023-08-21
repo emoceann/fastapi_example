@@ -22,6 +22,6 @@ class RegisterUser:
             )
         try:
             user.password = bcrypt.hash(user.password)
-            await db_service.insert_user(user, self.session)
+            return await db_service.insert_user(user, self.session)
         except Exception as e:
             log.exception(e, exc_info=True)

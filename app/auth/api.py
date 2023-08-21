@@ -10,12 +10,12 @@ from app.user.models import UserOut
 router = APIRouter(prefix="/auth")
 
 
-@router.post("/register", response_model=UserOut, status_code=status.HTTP_201_CREATED)
+@router.post("/register", response_model=UserOut | None)
 async def reg_user(
         data: models.UserIn,
         reg_service: register_service.RegisterUser = Depends()
 ):
-    await reg_service.register_user(data)
+    return await reg_service.register_user(data)
 
 
 @router.post("/token", response_model=TokenData | dict)
