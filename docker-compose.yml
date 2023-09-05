@@ -16,6 +16,8 @@ services:
       - "8000:8000"
     command: bash -c "alembic upgrade head && uvicorn app.main:setup_app --host 0.0.0.0 --port 8000"
 
+
+
   postgres:
     image: "postgres:14"
     restart: always
